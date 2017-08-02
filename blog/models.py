@@ -37,7 +37,7 @@ class Category(models.Model):
         verbose_name = u'博客分类'
         verbose_name_plural = verbose_name
     def __unicode__(self):
-        return self.name
+        return self.category_name
 
 
 class Article(models.Model):
