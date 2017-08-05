@@ -14,7 +14,7 @@ class UserProfile(AbstractUser):
     user_nick_name = models.CharField(max_length=24, verbose_name=u'用户昵称', default="")
     user_gender = models.CharField(max_length=10, choices=(("1",u"男"),("0","女")), default="1", verbose_name=u"性别选择")
     user_birday = models.DateField(verbose_name=u"用户生日", null=True, blank=True)
-    user_mobile = models.CharField(max_length=11, null=True, blank=True)
+    user_mobile = models.CharField(max_length=11, null=True, blank=True,verbose_name=u'电话号码')
     user_address = models.CharField(max_length=200, verbose_name=u"用户地址", default='')
     #需要安装 pip install Pillow
     user_image = models.ImageField(upload_to="image/user/%Y/%m", default="image/user/default.png", max_length=100, verbose_name=u"用户头像")
@@ -36,7 +36,8 @@ class Category(models.Model):
     class Meta:
         verbose_name = u'博客分类'
         verbose_name_plural = verbose_name
-    def __unicode__(self):
+
+    def __str__(self):
         return self.category_name
 
 
@@ -48,7 +49,7 @@ class Article(models.Model):
     article_user = models.ForeignKey(UserProfile, verbose_name=u'文章作者', null=True, blank=True)
     article_category = models.ForeignKey(Category, verbose_name=u'所属分类', null=True, blank=True)
     article_content = models.TextField(verbose_name=u'博客正文', default='')
-    article_type = models.CharField(max_length=10, choices=(("0",u"草稿"),("1","软删除"),("2","正文")), default="0", verbose_name=u"文章类别")
+    article_type = models.CharField(max_length=10, choices=(("0",u"草稿"),("1","软删除"),("2","正常")), default="0", verbose_name=u"文章类别")
     article_click = models.IntegerField(verbose_name=u'文章点击量', default=0)
     article_up = models.CharField(max_length=10, choices=(("1",u"置顶"),("0","取消置顶")), default="0", verbose_name=u"文章置顶")
     article_support= models.CharField(max_length=10, choices=(("1",u"推荐"),("0","取消推荐")), default="0", verbose_name=u"文章推荐")
@@ -56,5 +57,5 @@ class Article(models.Model):
     class Meta:
         verbose_name=u'文章表'
         verbose_name_plural = verbose_name
-    def __unicode__(self):
+    def __str__(self):
         return self.article_title
