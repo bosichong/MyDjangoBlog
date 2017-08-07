@@ -1,0 +1,41 @@
+
+@media only screen and (min-width: 1200px) {
+      .blog-g-fixed {
+        max-width: 1200px;
+      }
+    }
+/* 首页导航下边距离  */
+.am-topbar{ 
+        margin-bottom: 0px; 
+    }
+
+/* top图下边距  */
+.site-topimg{
+        margin-bottom: 10px;
+    }
+
+.blog-main{
+        width: 850px;
+        margin: 0px;
+        padding: 0px;
+    }
+.blog-content{
+        width: 840px;
+        padding: 0px;
+        margin-right: 10px;
+    }
+
+.blog-sidebar{
+        width: 350px;
+        margin: 0px;
+        padding: 0px;
+    }
+
+.blog-footer {
+      padding: 10px 0;
+      text-align: center;
+    }
+
+.blog-title {
+      margin: 10px 0 20px 0;
+    }

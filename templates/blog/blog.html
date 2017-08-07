@@ -4,14 +4,14 @@
 {% block site_title %}{{ article.article_title }}| 人生苦短 17python {% endblock %}
 
 {% block article %}
-<article class="blog-main">
+<article class="article-main">
       
       <h3 class="am-article-title blog-title">
         <a href="#">{{ article.article_title }}</a>
       </h3>
       <h4 class="am-article-meta blog-meta">by <a href="">open</a> posted on 2014/06/17 under <a href="#">字体</a></h4>
 
-      <div class="am-g blog-content">
+      <div class="blog-content">
        {% autoescape off %}
         {{ article.article_content|toMarkdown }}
        {% endautoescape %}
@@ -38,8 +38,14 @@
 {% endblock me %}
 {% block category %}<section class="am-panel am-panel-default">
         <div class="am-panel-hd">文章目录</div>
-        <ul class="am-list blog-list">
-          <li><a href="#">Google fonts 的字體（sans-serif 篇）</a></li>
+        <ul class="am-list am-list-border blog-list">
+          <li><a href="#">
+            <i class="am-icon-home am-icon-fw"></i>
+            Google fonts
+          <span class="am-badge am-align-right">17</span>
+          </a>
+            
+          </li>
           <li><a href="#">[but]服貿最前線？－再訪桃園機場</a></li>
           <li><a href="#">到日星鑄字行學字型</a></li>
           <li><a href="#">glyph font vs. 漢字（上）</a></li>

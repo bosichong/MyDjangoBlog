@@ -13,70 +13,17 @@
     <link href="{% static 'amazeui/assets/css/amazeui.min.css' %}" rel="stylesheet">
     <!-- <link th:href="/static/amazeui/assets/css/admin.css" rel="stylesheet"> -->
     <!-- 当前站点CSS样式文件 -->
-    <link href="/static/app.css" rel="stylesheet">
+    <link href="{% static 'main.css' %}" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="/static/amazeui/assets/js/jquery.min.js"></script>
     <!-- amazeui.js app.js -->
     <script src="/static/amazeui/assets/js/amazeui.min.js"></script>
     <script src="/static/app.js"></script>
-  <style>
-    @media only screen and (min-width: 1200px) {
-      .blog-g-fixed {
-        max-width: 1200px;
-      }
-    }
 
-    @media only screen and (min-width: 641px) {
-      .blog-sidebar {
-        font-size: 1.4rem;
-      }
-    }
-
-    .blog-main {
-      padding: 20px 0;
-    }
-
-    .blog-title {
-      margin: 10px 0 20px 0;
-    }
-
-    .blog-meta {
-      font-size: 14px;
-      margin: 10px 0 20px 0;
-      color: #222;
-    }
-
-    .blog-meta a {
-      color: #27ae60;
-    }
-
-    .blog-pagination a {
-      font-size: 1.4rem;
-    }
-
-    .blog-team li {
-      padding: 4px;
-    }
-
-    .blog-team img {
-      margin-bottom: 0;
-    }
-
-    .blog-content img,
-    .blog-team img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .blog-footer {
-      padding: 10px 0;
-      text-align: center;
-    }
-  </style>
 </head>
 <body>
-<header class="am-topbar">
+<header class="am-topbar am-g am-g-fixed blog-g-fixed">
   <h1 class="am-topbar-brand">
     <a href="#">17python</a>
   </h1>
@@ -110,16 +57,18 @@
 
   </div>
 </header>
-
+<div class="site-topimg am-g am-g-fixed blog-g-fixed">
+  <img src="{% static 'images/topbg.jpg' %}" class="am-img-responsive" alt=""/>
+</div>
 <div class="am-g am-g-fixed blog-g-fixed">
-  <div class="am-u-md-8">
+  <div class="am-u-md-8 blog-main">
     {% block article %} 
     
   {% endblock article %}
   
   </div>
 
-  <div class="am-u-md-4 blog-sidebar">
+  <div class="am-u-sm-4 blog-sidebar">
     <div class="am-panel-group">
       {% block me %} 
       
