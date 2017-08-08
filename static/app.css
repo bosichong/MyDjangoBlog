@@ -42,7 +42,7 @@
       margin: 10px 0 20px 0;
     }
 .blog-title a{
-    font-size: 36px;
+    font-size: 26px;
 }
 .blog-tag{
     width: 840px;
@@ -51,4 +51,17 @@
 
 .nick-name{
       padding: 10px 0px;
+}
+
+.blog-hr{
+    width: 840px;
+}
+
+.blog-cat{
+    border: none;
+}
+
+.blog-cat .am-panel-hd{
+    border: 1px solid #ddd;
+    border-bottom: none;
 }

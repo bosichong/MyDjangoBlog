@@ -13,7 +13,7 @@
       <h4 class="am-article-meta blog-meta">by <a href="" class="am-text-warning">{{ article.article_user }}</a>
          / posted on<span class="am-text-success"> {{ article.article_create_time }} </span>
        / <a href="" class="am-text-secondary">{{ article.article_category }}</a>
-        </h4>
+      </h4>
 
       <div class="blog-content">
        {% autoescape off %}
@@ -41,7 +41,7 @@
 
 {% block me %} 
       <section class="am-panel am-panel-default">
-        <div class="am-panel-hd">关于我</div>
+        <div class="am-panel-hd">About Me</div>
         <div class="am-panel-bd">
           <div class="avatar">
             <img class="am-circle am-center" src="{% url 'media' userinfo.user_image %}" width="140" height="140"/>
@@ -52,11 +52,10 @@
       </section>
 {% endblock %}
 
-
 {% block category %}
-<section class="am-panel am-panel-default">
-        <div class="am-panel-hd">文章目录</div>
-        <ul class="am-list am-list-static blog-list">
+<section class="am-panel am-panel-default blog-cat">
+        <div class="am-panel-hd">Category</div>
+        <ul class="am-list am-list-border">
           {% for c in categorys %}
             
           <li><a href="#">
