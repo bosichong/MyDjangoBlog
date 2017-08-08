@@ -1,7 +1,7 @@
 #coding=utf-8
 from django.contrib import admin
 
-from  .models import UserProfile, Article, Category
+from  .models import UserProfile, Article, Category, Siteinfo
 
 
 class UserProfileAdmin(admin.ModelAdmin):
@@ -24,6 +24,11 @@ class ArticleAdmin(admin.ModelAdmin):
     """文章字段"""
     list_display = ('article_title','article_user','article_category','article_type','article_up','article_support','article_click')
 
+
+class SiteinfoAdmin(admin.ModelAdmin):
+    list_display = ('site_name','site_user','site_detail')
+
 admin.site.register(UserProfile,UserProfileAdmin)
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Article,ArticleAdmin)
+admin.site.register(Siteinfo,SiteinfoAdmin)

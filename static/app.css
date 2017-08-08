@@ -1,9 +1,10 @@
-
+/* body{font-family: 'country_gothic', Arial, Helvetica, Simsun, STHeiti;} */
 @media only screen and (min-width: 1200px) {
       .blog-g-fixed {
         max-width: 1200px;
       }
     }
+
 /* 首页导航下边距离  */
 .am-topbar{ 
         margin-bottom: 0px; 
@@ -34,8 +35,20 @@
 .blog-footer {
       padding: 10px 0;
       text-align: center;
+      background: #f8f8f8;
     }
 
 .blog-title {
       margin: 10px 0 20px 0;
     }
+.blog-title a{
+    font-size: 36px;
+}
+.blog-tag{
+    width: 840px;
+}
+
+
+.nick-name{
+      padding: 10px 0px;
+}

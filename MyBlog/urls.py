@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.static import serve
 
 from blog.views import bloglist, blog
+from MyBlog.settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^$', bloglist),
     url(r'^blog/(?P<id>\w+)$', blog, name='blog'),#blog文章详情页路由设置
     url(r'^admin/', admin.site.urls),
     # url(r'^blog/', include('blog.urls', namespace="blog")),#引入blog下边的路
+    #配置上传文件的访问处理函数
+    url(r'^media/(?P<path>.*)$',  serve, {"document_root":MEDIA_ROOT}, name='media'),
 
 
 ]

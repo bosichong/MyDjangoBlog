@@ -13,7 +13,7 @@
     <link href="{% static 'amazeui/assets/css/amazeui.min.css' %}" rel="stylesheet">
     <!-- <link th:href="/static/amazeui/assets/css/admin.css" rel="stylesheet"> -->
     <!-- 当前站点CSS样式文件 -->
-    <link href="{% static 'main.css' %}" rel="stylesheet">
+    <link href="{% static 'app.css' %}" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="/static/amazeui/assets/js/jquery.min.js"></script>
@@ -23,7 +23,7 @@
 
 </head>
 <body>
-<header class="am-topbar am-g am-g-fixed blog-g-fixed">
+<header class="am-topbar am-g am-g-fixed blog-g-fixed ">
   <h1 class="am-topbar-brand">
     <a href="#">17python</a>
   </h1>
@@ -34,10 +34,11 @@
 
   <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
     <ul class="am-nav am-nav-pills am-topbar-nav">
-      <li class="am-active"><a href="#">首页</a></li>
+      <li class="am-active"><a href="#">Home</a></li>
       <li><a href="#">Python</a></li>
       <li><a href="#">Django</a></li>
-      <li class="am-dropdown" data-am-dropdown>
+      <li><a href="#">About me</a></li>
+      <!-- <li class="am-dropdown" data-am-dropdown>
         <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
           更多 <span class="am-icon-caret-down"></span>
         </a>
@@ -45,7 +46,7 @@
           <li class="am-dropdown-header">Title</li>
           <li><a href="#">About me</a></li>
         </ul>
-      </li>
+      </li> -->
     </ul>
 
     <form class="am-topbar-form am-topbar-left am-form-inline am-topbar-right" role="search">
@@ -55,11 +56,11 @@
       <button type="submit" class="am-btn am-btn-default am-btn-sm">搜索</button>
     </form>
 
-  </div>
-</header>
-<div class="site-topimg am-g am-g-fixed blog-g-fixed">
-  <img src="{% static 'images/topbg.jpg' %}" class="am-img-responsive" alt=""/>
+  </header>
 </div>
+ <div class="site-topimg am-g am-g-fixed blog-g-fixed">
+  <img src="{% static 'images/topbg.jpg' %}" class="am-img-responsive" alt=""/>
+</div> 
 <div class="am-g am-g-fixed blog-g-fixed">
   <div class="am-u-md-8 blog-main">
     {% block article %} 
@@ -70,23 +71,28 @@
 
   <div class="am-u-sm-4 blog-sidebar">
     <div class="am-panel-group">
+
+
       {% block me %} 
-      
+
       {% endblock me %}
 
 
-      {% block category %} 
-      
-      {% endblock category %}
+{% block category %}
+
+{% endblock %}
     </div>
   </div>
 
 </div>
 
-<footer class="blog-footer">
-  <p>blog template<br/>
-    <small>© Copyright XXX. by the AmazeUI Team.</small>
+
+<footer class="blog-footer am-g am-g-fixed blog-g-fixed">
+{% block footer %} 
+  
+    <small>© Designed by J_sky.Copyright 2017 - 2018 17python.com.</small>
   </p>
+{% endblock footer %}
 </footer>
 
 </body>

@@ -2,6 +2,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from datetime import datetime
+
 #创建字段的时候要么设置可以为空，要么就需要设置默认值。
 
 class UserProfile(AbstractUser):
@@ -16,6 +18,7 @@ class UserProfile(AbstractUser):
     user_birday = models.DateField(verbose_name=u"用户生日", null=True, blank=True)
     user_mobile = models.CharField(max_length=11, null=True, blank=True,verbose_name=u'电话号码')
     user_address = models.CharField(max_length=200, verbose_name=u"用户地址", default='')
+    user_detail = models.CharField(max_length=200, verbose_name=u"个人简介", default='')
     #需要安装 pip install Pillow
     user_image = models.ImageField(upload_to="image/user/%Y/%m", default="image/user/default.png", max_length=100, verbose_name=u"用户头像")
 
@@ -31,6 +34,7 @@ class Category(models.Model):
     """blog 分类"""
     category_name = models.CharField(max_length=20, verbose_name=u'分类名称', default='')
     category_detail = models.CharField(max_length=100, verbose_name=u'分类介绍', default='')
+    category_icon = models.CharField(max_length=100, verbose_name=u'分类图标', default='')
     category_sort_id = models.IntegerField(verbose_name=u'分类排序', default=1)
 
     class Meta:
@@ -48,14 +52,32 @@ class Article(models.Model):
     article_image = models.ImageField(upload_to="image/article/%Y/%m", default="image/article/default.png", max_length=100, verbose_name=u"文章配图")
     article_user = models.ForeignKey(UserProfile, verbose_name=u'文章作者', null=True, blank=True)
     article_category = models.ForeignKey(Category, verbose_name=u'所属分类', null=True, blank=True)
+    article_tag = models.CharField(max_length=50, verbose_name=u'日志标签', default='')
     article_content = models.TextField(verbose_name=u'博客正文', default='')
     article_type = models.CharField(max_length=10, choices=(("0",u"草稿"),("1","软删除"),("2","正常")), default="0", verbose_name=u"文章类别")
     article_click = models.IntegerField(verbose_name=u'文章点击量', default=0)
     article_up = models.CharField(max_length=10, choices=(("1",u"置顶"),("0","取消置顶")), default="0", verbose_name=u"文章置顶")
     article_support= models.CharField(max_length=10, choices=(("1",u"推荐"),("0","取消推荐")), default="0", verbose_name=u"文章推荐")
+    article_create_time= models.DateTimeField(verbose_name=u'创建时间',  auto_now_add=True)
+    article_update_time= models.DateTimeField(verbose_name=u'更新时间',  auto_now=True)
         
     class Meta:
         verbose_name=u'文章表'
         verbose_name_plural = verbose_name
     def __str__(self):
         return self.article_title
+
+class Siteinfo(models.Model):
+    """blog 分类"""
+    site_name = models.CharField(max_length=20, verbose_name=u'站点名称', default='')
+    site_detail = models.CharField(max_length=100, verbose_name=u'站点介绍', default='')
+    site_user = models.ForeignKey(UserProfile, verbose_name=u'管理员', null=True, blank=True)
+    site_footer = models.TextField(verbose_name=u'站点底部代码', default='')
+    site_logo = models.ImageField(upload_to="image/site/", default="image/site/default.png", max_length=100, verbose_name=u"站点logo")
+    site_topimage = models.ImageField(upload_to="image/site/", default="image/site/topbg.jpg", max_length=100, verbose_name=u"顶部大图")
+    class Meta:
+        verbose_name = u'网站信息'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.site_name
