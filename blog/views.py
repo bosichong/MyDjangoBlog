@@ -33,7 +33,7 @@ def bloglist(request):
     except EmptyPage:                       # 若超过了则最后一页
         contacts = paginator.page(paginator.num_pages)
 
-
+    page_url = request.get_full_path()
 
     userinfo = UserProfile.objects.get(pk=1)#站长资料
     categorys = Category.objects.all()#获取所有分类
@@ -45,6 +45,7 @@ def bloglist(request):
                                     'contacts':contacts,
                                     'c':c,
                                     's':s,
+                                    'page_url':page_url,
                                     'form':form})
 
 

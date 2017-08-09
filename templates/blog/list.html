@@ -2,14 +2,21 @@
 {% load mytags %}
 {% block site_title %}Blog | 人生苦短 17python {% endblock %}
 
+
+{% block nav %}
+      <li class="{% if page_url == '/' %}am-active{% endif %}"><a href="{% url '' %}">Home</a></li>
+      <li class="{% if page_url == '/?c=1' %}am-active{% endif %}"><a href="{% url '' %}?c=1">Python</a></li>
+      <li class="{% if page_url == '/?c=2' %}am-active{% endif %}"><a href="{% url '' %}?c=2">Django</a></li>
+      <li ><a href="#">About me</a></li>
+{% endblock nav %}
+
+
 {% block article %}
-
-
 {% for article in contacts %}
 <article class="blog-main">
       
       <h3 class="am-article-title blog-title">
-        <a href="#">{{ article.article_title }}</a>
+        <a href="/blog/{{ article.id }}">{{ article.article_title }}</a>
       </h3>
       <h4 class="am-article-meta blog-meta">by <a href="" class="am-text-warning">{{ article.article_user.user_nick_name }}</a>
          / posted on<span class="am-text-success"> {{ article.article_create_time }} </span>
@@ -24,7 +31,7 @@
     
       </div>
  </article>
-<a href="/blog/{{ article.id }}">CONTINUE READING</a>
+<a href="/blog/{{ article.id }}" class="am-text-warning">CONTINUE READING</a>
   <hr class="am-article-divider blog-hr">
   
 {% endfor %}
@@ -72,10 +79,10 @@
         <ul class="am-list am-list-border">
           {% for c in categorys %}
             
-          <li><a href="{% url '' %}?c={{ c.id}}">
+          <li><a href="{% url '' %}?c={{ c.id }}">
             <i class="{{ c.category_icon }}"></i>
             {{ c.category_name }}
-          <!-- <span class="am-badge am-align-right">17</span> -->
+           <span class="am-badge am-align-right">{{ c.id|cat_count  }}</span> 
           </a>
             
           </li>

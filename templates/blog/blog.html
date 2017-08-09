@@ -4,6 +4,13 @@
 {% load mytags %}
 {% block site_title %}{{ article.article_title }}| 人生苦短 17python {% endblock %}
 
+{% block nav %}
+      <li class="{% if page_url == '/' %}am-active{% endif %}"><a href="{% url '' %}">Home</a></li>
+      <li class="{% if page_url == '/?c=1' %}am-active{% endif %}"><a href="{% url '' %}?c=1">Python</a></li>
+      <li class="{% if page_url == '/?c=2' %}am-active{% endif %}"><a href="{% url '' %}?c=2">Django</a></li>
+      <li ><a href="#">About me</a></li>
+{% endblock nav %}
+
 {% block article %}
 <article class="article-main">
       
@@ -22,16 +29,17 @@
     
     
       </div>
-      <div class="am-panel am-panel-default blog-tag">
+      {% if tags %}
+              <div class="am-panel am-panel-default blog-tag">
         <div class="am-panel-hd">相关标签</div>
         <div class="am-panel-bd">
          {% for tag in tags  %}
           <a href="" class="am-badge am-badge-primary">{{ tag }}</a>
         {% endfor %}
         </div>
-        
-        
       </div>
+      {% endif %}
+
 </article>
 
 {% endblock %}
