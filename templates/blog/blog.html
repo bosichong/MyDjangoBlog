@@ -10,9 +10,9 @@
       <h3 class="am-article-title blog-title">
         <a href="#">{{ article.article_title }}</a>
       </h3>
-      <h4 class="am-article-meta blog-meta">by <a href="" class="am-text-warning">{{ article.article_user }}</a>
+      <h4 class="am-article-meta blog-meta">by <a href="" class="am-text-warning">{{ article.article_user.user_nick_name }}</a>
          / posted on<span class="am-text-success"> {{ article.article_create_time }} </span>
-       / <a href="" class="am-text-secondary">{{ article.article_category }}</a>
+       / <a href="{% url '' %}?c={{ article.article_category.id}}" class="am-text-secondary">{{ article.article_category }}</a>
       </h4>
 
       <div class="blog-content">
@@ -58,7 +58,7 @@
         <ul class="am-list am-list-border">
           {% for c in categorys %}
             
-          <li><a href="#">
+          <li><a href="{% url '' %}?c={{ c.id}}">
             <i class="{{ c.category_icon }}"></i>
             {{ c.category_name }}
           <!-- <span class="am-badge am-align-right">17</span> -->

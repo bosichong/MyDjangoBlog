@@ -2,13 +2,28 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger#翻页相关模块
+from django.db.models import Q#模糊查询多个字段使用
 
 
 from .models import Article, Category, UserProfile, Siteinfo
+from .forms import Searchform
 # Create your views here.
 
 def bloglist(request):
-    articles = Article.objects.all().order_by('-article_create_time')
+    c =request.GET.get('c', '')
+    s = ''
+    if request.method == 'GET':
+        form = Searchform(request.GET)
+        if form.is_valid():
+            s =request.GET.get('s')
+    if c:
+        articles = Article.objects.filter(article_category=c).order_by('-article_create_time')
+    elif s:
+        articles = Article.objects.filter(Q(article_title__contains=s)|Q(article_content__contains=s)).order_by('-article_create_time')
+    else:
+        articles = Article.objects.all().order_by('-article_create_time')
+
+    
     paginator = Paginator(articles, 2) # 第二个参数是每页显示的数量
     page = request.GET.get('p')          # 获取URL参数中的page number
     try:
@@ -27,7 +42,10 @@ def bloglist(request):
                                     'userinfo':userinfo,
                                     'categorys':categorys,
                                     'siteinfo':siteinfo,
-                                    'contacts':contacts})
+                                    'contacts':contacts,
+                                    'c':c,
+                                    's':s,
+                                    'form':form})
 
 
 def blog(request, id):
