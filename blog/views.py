@@ -10,6 +10,7 @@ from .forms import Searchform
 # Create your views here.
 
 def bloglist(request):
+    articles = Article.objects.filter(article_type='2').order_by('-article_create_time')
     c =request.GET.get('c', '')
     s = ''
     if request.method == 'GET':
@@ -17,11 +18,10 @@ def bloglist(request):
         if form.is_valid():
             s =request.GET.get('s')
     if c:
-        articles = Article.objects.filter(article_category=c).order_by('-article_create_time')
+        articles = articles.filter(article_category=c).order_by('-article_create_time')
     elif s:
-        articles = Article.objects.filter(Q(article_title__contains=s)|Q(article_content__contains=s)).order_by('-article_create_time')
-    else:
-        articles = Article.objects.all().order_by('-article_create_time')
+        articles = articles.filter(Q(article_title__contains=s)|Q(article_content__contains=s)).order_by('-article_create_time')
+        
 
     
     paginator = Paginator(articles, 2) # 第二个参数是每页显示的数量
