@@ -69,7 +69,7 @@
           <li><a href="{% url '' %}?c={{ c.id}}">
             <i class="{{ c.category_icon }}"></i>
             {{ c.category_name }}
-          <!-- <span class="am-badge am-align-right">17</span> -->
+          <span class="am-badge am-align-right">{{ c.id|cat_count  }}</span> 
           </a>
             
           </li>

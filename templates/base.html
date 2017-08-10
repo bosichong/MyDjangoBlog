@@ -24,7 +24,7 @@
 </head>
 <body>
   
-<header class="am-topbar am-g am-g-fixed blog-g-fixed ">
+<header class="am-topbar am-topbar-inverse am-g am-g-fixed blog-g-fixed ">
   <h1 class="am-topbar-brand">
     <a href="{% url '' %}">17python</a>
   </h1>
@@ -54,7 +54,7 @@
       <div class="am-form-group">
         <input type="text" class="am-form-field am-input-sm" placeholder="Python Django" name="s">
       </div>
-      <button type="submit" class="am-btn am-btn-secondary am-btn-sm">
+      <button type="submit" class="am-btn am-btn-success am-btn-sm">
         <i class="am-icon-search"></i>
         Search</button>
     </form>
@@ -98,5 +98,11 @@
 {% endblock footer %}
 </footer>
 
+  <div data-am-widget="gotop" class="am-gotop am-gotop-fixed" >
+    <a href="#top" title="回到顶部">
+        <span class="am-gotop-title">回到顶部</span>
+          <i class="am-gotop-icon am-icon-chevron-up"></i>
+    </a>
+  </div>
 </body>
 </html>
