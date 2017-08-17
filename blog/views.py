@@ -52,12 +52,26 @@ def bloglist(request):
 def blog(request, id):
     """blog文章详情页"""
     article = Article.objects.get(pk=id)#日志数据
+    
+    try:
+        pa = Article.objects.get(pk=int(id)-1)#前一篇日志
+    except Exception as e:
+        pa = None
+
+    
+    try:
+        na = Article.objects.get(pk=int(id)+1)#下篇日志
+    except Exception as e:
+        na = None
+    
     userinfo = UserProfile.objects.get(pk=1)#站长资料
     categorys = Category.objects.all()#获取所有分类
     siteinfo = Siteinfo.objects.get(pk=1)#获取站点信息
-    tags = article.article_tag.split()
+    tags = article.article_tag.split()#获得日志的tag
     return render(request, 'blog/blog.html', {
                                     'article':article, 
+                                    'pa':pa,
+                                    'na':na,
                                     'tags':tags, 
                                     'userinfo':userinfo,
                                     'categorys':categorys,

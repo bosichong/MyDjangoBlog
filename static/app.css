@@ -57,6 +57,9 @@
     width: 840px;
 }
 
+
+
+/* 右边分类列表模块设置 */
 .blog-cat{
     border: none;
 }
@@ -65,3 +68,17 @@
     border: 1px solid #ddd;
     border-bottom: none;
 }
+
+/* 上一篇 下一篇 */
+.blog-pn{
+    width: 840px;
+    height: auto;
+    overflow: hidden;
+}
+.blog-pn .am-panel-bd{
+    height: auto;
+    overflow: hidden;
+
+}
+
+
