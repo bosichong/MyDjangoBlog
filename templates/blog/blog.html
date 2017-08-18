@@ -53,7 +53,7 @@
         <div class="am-panel-hd">相关标签</div>
         <div class="am-panel-bd">
          {% for tag in tags  %}
-          <a href="" class="am-badge am-badge-primary">{{ tag }}</a>
+          <a href="{% url '' %}?t={{ tag }}" class="am-badge am-badge-primary">{{ tag }}</a>
         {% endfor %}
         </div>
       </div>

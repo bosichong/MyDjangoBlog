@@ -46,8 +46,10 @@
             <li class=""><a href="?{% if c != '' %}c={{ c }}&{% endif %}{% if s != '' %}s={{ s }}&{% endif %}p={{ contacts.previous_page_number }}">&laquo; 上一页</a></li>
         {% endif %}
 
+
         {% for p in contacts.paginator.page_range %}
-           <li><a href="?{% if c != '' %}c={{ c }}&{% endif %}{% if s != '' %}s={{ s }}&{% endif %}p={{ p }}">{{ p }}</a></li>
+       
+           <li class="{% if p == page_number %}am-active{% endif %}"><a href="?{% if c != '' %}c={{ c }}&{% endif %}{% if s != '' %}s={{ s }}&{% endif %}p={{ p }}">{{ p }}</a></li>
         {% endfor %}
 
         {% if contacts.has_next %}
