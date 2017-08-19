@@ -5,7 +5,9 @@
       }
     }
 
-.blog-header {background-color: #333; border-color: #ccc;}
+.blog-header {
+    background-color: #333; 
+    border-color: #ccc;}
 
 /* 首页导航下边距离  */
 .am-topbar{ 
