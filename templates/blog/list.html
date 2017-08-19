@@ -82,7 +82,7 @@
           {% for c in categorys %}
             
           <li>
-            <a href="{% url '' %}?c={{ c.id }}">
+            <a class="am-link-muted" href="{% url '' %}?c={{ c.id }}">
             <i class="{{ c.category_icon }}"></i>
             {{ c.category_name }}
            <span class="am-badge am-align-right">{{ c.id|cat_count  }}</span> 

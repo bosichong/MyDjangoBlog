@@ -33,7 +33,7 @@ def bloglist(request):
         
 
     
-    paginator = Paginator(articles, 2) # 第二个参数是每页显示的数量
+    paginator = Paginator(articles, 5) # 第二个参数是每页显示的数量
     page = request.GET.get('p')          # 获取URL参数中的page number
     try:
         contacts = paginator.page(page)
