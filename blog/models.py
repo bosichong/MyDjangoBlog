@@ -55,17 +55,24 @@ class Article(models.Model):
     article_tag = models.CharField(max_length=50, verbose_name=u'日志标签', default='')
     article_content = models.TextField(verbose_name=u'博客正文', default='')
     article_type = models.CharField(max_length=10, choices=(("0",u"草稿"),("1","软删除"),("2","正常")), default="0", verbose_name=u"文章类别")
-    article_click = models.IntegerField(verbose_name=u'文章点击量', default=0)
+    article_click = models.PositiveIntegerField(verbose_name=u'文章点击量', default=0)
     article_up = models.CharField(max_length=10, choices=(("1",u"置顶"),("0","取消置顶")), default="0", verbose_name=u"文章置顶")
     article_support= models.CharField(max_length=10, choices=(("1",u"推荐"),("0","取消推荐")), default="0", verbose_name=u"文章推荐")
     article_create_time= models.DateTimeField(verbose_name=u'创建时间',  auto_now_add=True)
     article_update_time= models.DateTimeField(verbose_name=u'更新时间',  auto_now=True)
+
         
     class Meta:
         verbose_name=u'文章表'
         verbose_name_plural = verbose_name
     def __str__(self):
         return self.article_title
+
+#model 中定义的方法 为啥不能用？
+    def increase_article_click(self):
+        """文章点击量"""
+        self.article_click += 1
+        self.save(update_fields=['article_click'])
 
 class Siteinfo(models.Model):
     """blog 分类"""

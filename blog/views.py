@@ -62,7 +62,9 @@ def bloglist(request):
 def blog(request, id):
     """blog文章详情页"""
     article = Article.objects.get(pk=id)#日志数据
-    
+    article.increase_article_click()#增加文章访问量
+
+
     #检测上一篇 下一篇文章
     try:
         pa = Article.objects.get(pk=int(id)-1)#前一篇日志
@@ -84,6 +86,7 @@ def blog(request, id):
     siteinfo = Siteinfo.objects.get(pk=1)#获取站点信息
     tags = article.article_tag.split()#获得日志的tag
 
+    
 
     if article.article_type != '2':
         return render(request, '404.html')
