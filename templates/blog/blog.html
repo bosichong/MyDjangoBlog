@@ -17,8 +17,8 @@
       <h3 class="am-article-title blog-title">
         <a href="#">{{ article.article_title }}</a>
       </h3>
-      <h4 class="am-article-meta blog-meta">by <a href="" class="am-text-warning">{{ article.article_user.user_nick_name }}</a>
-         / posted on<span class="am-text-success"> {{ article.article_create_time }} </span>
+      <h4 class="am-article-meta blog-meta">By <a href="" class="am-text-warning">{{ article.article_user.user_nick_name }}</a>
+         / Posted On<span class="am-text-success"> {{ article.article_create_time }} </span> / Update in<span class="am-text-success"> {{ article.article_update_time }} </span>
        / <a href="{% url '' %}?c={{ article.article_category.id}}" class="am-text-secondary">{{ article.article_category }}</a>
       </h4>
 
@@ -29,7 +29,7 @@
     
     
       </div>
-      <div class="am-panel am-panel-default blog-pn">
+      <div class="am-panel blog-pn">
         <div class="am-panel-bd">
           <div class="am-u-sm-6">
             {% if pa %}
@@ -53,7 +53,7 @@
         <div class="am-panel-hd">相关标签</div>
         <div class="am-panel-bd">
          {% for tag in tags  %}
-          <a href="{% url '' %}?t={{ tag }}" class="am-badge am-badge-primary">{{ tag }}</a>
+          <a href="{% url '' %}?t={{ tag }}" class="am-badge am-badge-success">{{ tag }}</a>
         {% endfor %}
         </div>
       </div>

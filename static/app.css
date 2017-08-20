@@ -1,15 +1,56 @@
 /* body{font-family: 'country_gothic', Arial, Helvetica, Simsun, STHeiti;} */
 @media only screen and (min-width: 1200px) {
-      .blog-g-fixed {
-        max-width: 1200px;
-      }
+    .blog-g-fixed {
+      max-width: 1200px;
     }
+  }
 
-.blog-header {
-    background-color: #333; 
-    border-color: #ccc;}
+  @media only screen and (min-width: 641px) {
+    .blog-sidebar {
+      font-size: 1.4rem;
+    }
+  }
 
-/* 首页导航下边距离  */
+  .blog-main {
+    padding: 0;
+  }
+
+  .blog-title {
+    margin: 10px 0 20px 0;
+  }
+
+  .blog-meta {
+    font-size: 14px;
+    margin: 10px 0 20px 0;
+    color: #575757;
+  }
+
+  .blog-meta a {
+    color: #27ae60;
+  }
+
+  .blog-pagination a {
+    font-size: 1.4rem;
+  }
+
+  .blog-team li {
+    padding: 4px;
+  }
+
+  .blog-team img {
+    margin-bottom: 0;
+  }
+
+  .blog-content img,
+  .blog-team img {
+    max-width: 100%;
+    height: auto;
+  }
+
+
+
+
+/* 首页导航下边距离   */
 .am-topbar{ 
         margin-bottom: 0px; 
     }
@@ -19,22 +60,7 @@
         margin-bottom: 10px;
     }
 
-.blog-main{
-        width: 850px;
-        margin: 0px;
-        padding: 0px;
-    }
-.blog-content{
-        width: 840px;
-        padding: 0px;
-        margin-right: 10px;
-    }
 
-.blog-sidebar{
-        width: 350px;
-        margin: 0px;
-        padding: 0px;
-    }
 
 .blog-footer {
       padding: 10px 0;
@@ -50,24 +76,31 @@
     padding-left: 5px;
 }
 
+
+
 .blog-title {
       margin: 10px 0 20px 0;
     }
 .blog-title a{
     font-size: 26px;
 }
-.blog-tag{
-    width: 840px;
-}
+
+
+
+
+
+
+
+
+
+
 
 
 .nick-name{
       padding: 10px 0px;
 }
 
-.blog-hr{
-    width: 840px;
-}
+
 
 
 
@@ -83,7 +116,6 @@
 
 /* 上一篇 下一篇 */
 .blog-pn{
-    width: 840px;
     height: auto;
     overflow: hidden;
 }

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>{% block site_title %}blog{% endblock site_title %}</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
@@ -13,7 +13,7 @@
     <link href="{% static 'amazeui/assets/css/amazeui.min.css' %}" rel="stylesheet">
     <!-- <link th:href="/static/amazeui/assets/css/admin.css" rel="stylesheet"> -->
     <!-- 当前站点CSS样式文件 -->
-    <link href="{% static 'app1.css' %}" rel="stylesheet">
+    <link href="{% static 'app.css' %}" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="/static/amazeui/assets/js/jquery.min.js"></script>
@@ -24,7 +24,7 @@
 </head>
 <body>
   
-<header class="am-topbar am-topbar-inverse am-g am-g-fixed blog-g-fixed blog-header ">
+<header class="am-topbar">
   <h1 class="am-topbar-brand">
     <a href="{% url '' %}">17python</a>
   </h1>
@@ -55,25 +55,25 @@
       <div class="am-form-group">
         <input type="text" class="am-form-field am-input-sm" placeholder="Python Django" name="s">
       </div>
-      <button type="submit" class="am-btn am-btn-success am-btn-sm">
+      <button type="submit" class="am-btn am-btn-warning am-btn-sm">
         <i class="am-icon-search"></i>
-        Search</button>
+        </button>
     </form>
 
   </header>
 </div>
- <div class="site-topimg am-g am-g-fixed blog-g-fixed">
+ <div class="site-topimg am-g">
   <img src="{% static 'images/topbg.jpg' %}" class="am-img-responsive" alt=""/>
 </div> 
 <div class="am-g am-g-fixed blog-g-fixed">
-  <div class="am-u-md-8 blog-main">
+  <div class="am-u-md-8">
     {% block article %} 
     
   {% endblock article %}
   
   </div>
 
-  <div class="am-u-sm-4 blog-sidebar">
+  <div class="am-u-md-4 blog-sidebar">
     <div class="am-panel-group">
 
 
@@ -90,8 +90,8 @@
 
 </div>
 
-<div class="am-g am-g-fixed blog-g-fixed footer-top">
-    <div class="am-g am-g-fixed">
+<div class="am-g footer-top">
+    <div class="am-g">
         <div class="am-u-md-3">
             <h2 class="site-fd am-text-center"><a href="#" target="_blank" class="am-link-muted">Powered By</a></h2>
             <ul class="site-links">
@@ -123,7 +123,7 @@
 
     </div>
 </div>
-<footer class="blog-footer am-g am-g-fixed blog-g-fixed">
+<footer class="blog-footer am-g">
 {% block footer %} 
 {% endblock footer %}
 </footer>
