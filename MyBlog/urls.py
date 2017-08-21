@@ -19,6 +19,7 @@ from django.views.static import serve
 
 from blog.views import *
 from MyBlog.settings import MEDIA_ROOT
+from MyBlog.feeds import LatestEntriesFeed
 
 urlpatterns = [
     url(r'^$', bloglist, name=''),
@@ -28,6 +29,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls', namespace="blog")),#引入blog下边的路
     #配置上传文件的访问处理函数
     url(r'^media/(?P<path>.*)$',  serve, {"document_root":MEDIA_ROOT}, name='media'),
+    url(r'^rss$', LatestEntriesFeed(), name='rss'),#rss
 
     url(r'^test', test, name='test'),
 
