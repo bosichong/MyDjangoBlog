@@ -79,9 +79,14 @@ class Siteinfo(models.Model):
     site_name = models.CharField(max_length=20, verbose_name=u'站点名称', default='')
     site_detail = models.CharField(max_length=100, verbose_name=u'站点介绍', default='')
     site_user = models.ForeignKey(UserProfile, verbose_name=u'管理员', null=True, blank=True)
-    site_footer = models.TextField(verbose_name=u'站点底部代码', default='')
     site_logo = models.ImageField(upload_to="image/site/", default="image/site/default.png", max_length=100, verbose_name=u"站点logo")
     site_topimage = models.ImageField(upload_to="image/site/", default="image/site/topbg.jpg", max_length=100, verbose_name=u"顶部大图")
+    site_powered = models.TextField(verbose_name=u'Powered By', default='')
+    site_links = models.TextField(verbose_name=u'links', default='')
+    site_contact = models.TextField(verbose_name=u'contact me', default='')
+    site_footer = models.TextField(verbose_name=u'站点底部代码', default='')
+    
+
     class Meta:
         verbose_name = u'网站信息'
         verbose_name_plural = verbose_name

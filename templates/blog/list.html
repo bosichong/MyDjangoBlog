@@ -3,12 +3,7 @@
 {% block site_title %} 人生苦短 17python {% endblock %}
 
 
-{% block nav %}
-      <li class="{% if page_url == '/' %}am-active{% endif %}"><a href="{% url '' %}">Home</a></li>
-      <li class="{% if page_url == '/?c=1' %}am-active{% endif %}"><a href="{% url '' %}?c=1">Python</a></li>
-      <li class="{% if page_url == '/?c=2' %}am-active{% endif %}"><a href="{% url '' %}?c=2">Django</a></li>
-      <li class="{% if page_url == '/?c=6' %}am-active{% endif %}"><a href="{% url '' %}?c=6">About me</a></li>
-{% endblock nav %}
+
 
 
 {% block article %}
@@ -61,46 +56,6 @@
 {% endblock %}
 
 
-{% block me %} 
-      <section class="am-panel am-panel-default">
-        <div class="am-panel-hd">About Me</div>
-        <div class="am-panel-bd">
-          <div class="avatar">
-            <img class="am-circle am-center" src="{% url 'media' userinfo.user_image %}" width="140" height="140"/>
-          </div>
-          <div class="am-text-center am-text-lg nick-name">{{ userinfo.user_nick_name }}</div>
-          <div class="am-text-center am-text-xs ">{{ userinfo.user_detail }}</div>
-        </div>
-      </section>
-{% endblock %}
 
 
-{% block category %}
-<section class="am-panel am-panel-default blog-cat">
-        <div class="am-panel-hd">Category</div>
-        <ul class="am-list am-list-border">
-          {% for c in categorys %}
-            
-          <li>
-            <a class="am-link-muted" href="{% url '' %}?c={{ c.id }}">
-            <i class="{{ c.category_icon }}"></i>
-            {{ c.category_name }}
-           <span class="am-badge am-align-right">{{ c.id|cat_count  }}</span> 
-          </a>
-            
-          </li>
-            
-          {% endfor %}
-          
 
-        </ul>
-      </section>
-{% endblock %}
-
-{% block footer %} 
-  {% autoescape off %}
-    {{ siteinfo.site_footer }}
-  {% endautoescape %}
-    
-
-{% endblock %}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   {% load staticfiles %}
+  {% load mytags %}
 <head lang="en">
   <meta charset="UTF-8">
   <title>{% block site_title %}blog{% endblock site_title %}</title>
@@ -13,7 +14,7 @@
     <link href="{% static 'amazeui/assets/css/amazeui.min.css' %}" rel="stylesheet">
     <!-- <link th:href="/static/amazeui/assets/css/admin.css" rel="stylesheet"> -->
     <!-- 当前站点CSS样式文件 -->
-    <link href="{% static 'app.css' %}" rel="stylesheet">
+    <link href="{% static 'app1.css' %}" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="/static/amazeui/assets/js/jquery.min.js"></script>
@@ -35,20 +36,11 @@
 
   <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
     <ul class="am-nav am-nav-pills am-topbar-nav">
-      {% block nav %}
-
-      {% endblock nav %}
-      
-      <!-- <li class="am-dropdown" data-am-dropdown>
-        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-          更多 <span class="am-icon-caret-down"></span>
-        </a>
-        <ul class="am-dropdown-content">
-          <li class="am-dropdown-header">Title</li>
-          <li><a href="#">About me</a></li>
-        </ul>
-      </li> -->
-      
+        <li class="{% if page_url == '/' %}am-active{% endif %}"><a href="{% url '' %}">Home</a></li>
+        <li class="{% if page_url == '/?c=1' %}am-active{% endif %}"><a href="{% url '' %}?c=1">Python</a></li>
+        <li class="{% if page_url == '/?c=2' %}am-active{% endif %}"><a href="{% url '' %}?c=2">Django</a></li>
+        <li class="{% if page_url == '/?c=6' %}am-active{% endif %}"><a href="{% url '' %}?c=6">About me</a></li>
+     
     </ul>
     <form class="am-topbar-form am-topbar-left am-form-inline am-topbar-right" action="{% url '' %}">
       
@@ -77,55 +69,79 @@
     <div class="am-panel-group">
 
 
-      {% block me %} 
+      <section class="am-panel am-panel-default">
+        <div class="am-panel-hd">About Me</div>
+        <div class="am-panel-bd">
+          <div class="avatar">
+            <img class="am-circle am-center" src="{% url 'media' userinfo.user_image %}" width="140" height="140"/>
+          </div>
+          <div class="am-text-center am-text-lg nick-name">{{ userinfo.user_nick_name }}</div>
+          <div class="am-text-center am-text-xs ">{{ userinfo.user_detail }}</div>
+        </div>
+      </section>
 
-      {% endblock me %}
 
 
-{% block category %}
+      <section class="am-panel am-panel-default blog-cat">
+        <div class="am-panel-hd">Category</div>
+        <ul class="am-list am-list-border">
+          {% for c in categorys %}
+            
+          <li>
+            <a class="am-link-muted" href="{% url '' %}?c={{ c.id }}">
+            <i class="{{ c.category_icon }}"></i>
+            {{ c.category_name }}
+           <span class="am-badge am-align-right">{{ c.id|cat_count  }}</span> 
+          </a>
+            
+          </li>
+            
+          {% endfor %}
+          
 
-{% endblock %}
+        </ul>
+      </section>
+
+
+
     </div>
   </div>
 
 </div>
 
 <div class="am-g footer-top">
-    <div class="am-g">
+    <div>
         <div class="am-u-md-3">
             <h2 class="site-fd am-text-center"><a href="#" target="_blank" class="am-link-muted">Powered By</a></h2>
             <ul class="site-links">
-              <li><a href="https://www.python.org/" target="_blank" class="am-link-muted">Python</a></li>
-              <li><a href="https://www.djangoproject.com/download/" target="_blank" class="am-link-muted">Django</a></li>
-              <li><a href="http://amazeui.org/" target="_blank" class="am-link-muted">Amaze UI</a></li>
-              <li><a href="https://www.sqlite.org/" target="_blank" class="am-link-muted">SQLite3</a></li>
-              <li><a href="https://gitee.com" target="_blank" class="am-link-muted">Git 码云</a></li>
-              <li><a href="https://highlightjs.org/" target="_blank" class="am-link-muted">highlight.js</a></li>
-              <!-- <li><a href="http://amazeui.org/" target="blank">Amaze UI</a></li>
-              <li><a href="https://www.sqlite.org/" target="blank">SQLite3</a></li> -->
-            </div>
+                {% autoescape off %}
+                {{ siteinfo.site_powered }}
+              {% endautoescape %}
+            </ul>
+          </div>
         <div class="am-u-md-3">
             <h2 class="site-fd am-text-center"><a href="#" target="_blank" class="am-link-muted">Links</a></h2>
                 <ul class="site-social">
-                  <li><a href="https://gitee.com" target="_blank" class="am-link-muted">码云</a></li>
+                  {% autoescape off %}
+                  {{ siteinfo.site_links }}
+                {% endautoescape %}
 
                 </ul>
         </div>
       <div class="am-u-md-6">
         <h2 class="site-fd am-text-center"><a href="#" target="_blank" class="am-link-muted">Contact me</a></h2>
-        <ul class="site-social">
-          <li><a href="/about/contact"><span class="am-icon-qq"></span></a></li>
-          <li><a href="http://weibo.com/amazeui" title="Amaze UI 微博" target="_blank"><span class="am-icon-weibo"></span></a></li>
-          <li><a href="#am-wechat" title="云适配微信" data-am-modal=""><span class="am-icon-wechat"></span></a></li>
-          <li><span class="am-icon-paper-plane"></span></li>
-        </ul>
+        {% autoescape off %}
+        {{ siteinfo.site_contact }}
+      {% endautoescape %}
+
       </div>
 
     </div>
 </div>
 <footer class="blog-footer am-g">
-{% block footer %} 
-{% endblock footer %}
+  {% autoescape off %}
+  {{ siteinfo.site_footer }}
+{% endautoescape %}
 </footer>
 
   <div data-am-widget="gotop" class="am-gotop am-gotop-fixed" >
