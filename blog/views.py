@@ -44,13 +44,14 @@ def bloglist(request):
 
     page_url = request.get_full_path()
 
-    userinfo = UserProfile.objects.get(pk=1)#站长资料
-    categorys = Category.objects.all()#获取所有分类
-    siteinfo = Siteinfo.objects.get(pk=1)#获取站点信息
+    #已经使用Django上下文来处理以下三个数据
+    # userinfo = UserProfile.objects.get(pk=1)#站长资料
+    # categorys = Category.objects.all()#获取所有分类
+    # siteinfo = Siteinfo.objects.get(pk=1)#获取站点信息
     return render(request, 'blog/list.html', {'articles':articles, 
-                                    'userinfo':userinfo,
-                                    'categorys':categorys,
-                                    'siteinfo':siteinfo,
+                                    # 'userinfo':userinfo,
+                                    # 'categorys':categorys,
+                                    # 'siteinfo':siteinfo,
                                     'contacts':contacts,
                                     'c':c,
                                     's':s,
@@ -81,9 +82,11 @@ def blog(request, id):
     except Exception as e:
         na = None
     
-    userinfo = UserProfile.objects.get(pk=1)#站长资料
-    categorys = Category.objects.all()#获取所有分类
-    siteinfo = Siteinfo.objects.get(pk=1)#获取站点信息
+
+    #已经使用Django上下文来处理以下三个数据
+    # userinfo = UserProfile.objects.get(pk=1)#站长资料
+    # categorys = Category.objects.all()#获取所有分类
+    # siteinfo = Siteinfo.objects.get(pk=1)#获取站点信息
     tags = article.article_tag.split()#获得日志的tag
 
     
@@ -95,9 +98,10 @@ def blog(request, id):
                                     'article':article, 
                                     'pa':pa,
                                     'na':na,
-                                    'tags':tags, 
-                                    'userinfo':userinfo,
-                                    'categorys':categorys,
-                                    'siteinfo':siteinfo,})
+                                    # 'userinfo':userinfo,
+                                    # 'siteinfo':siteinfo,
+                                    # 'categorys':categorys,
+                                    'tags':tags,})
+                                    
 
 
