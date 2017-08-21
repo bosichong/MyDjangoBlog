@@ -105,3 +105,24 @@ def blog(request, id):
                                     
 
 
+
+def page_not_found(request):
+    return render(request, '404.html')
+
+
+def page_error(request):
+    return render(request, '500.html')
+
+
+def permission_denied(request):
+    return render(request, '403.html')
+
+
+
+
+def test(request):
+    values = request.META.items()  
+    html = []
+    for k, v in values:
+      html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
+    return HttpResponse('<table>%s</table>' % '\n'.join(html))

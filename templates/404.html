@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
+    {% load staticfiles %}
+  <head lang="en">
     <meta charset="UTF-8">
-    <title>404，您要找的页面不存在</title>
-
-</head>
+    <title>hi~! 404 没有找到你要的页面</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+      <!-- amazeui -->
+      <link href="{% static 'amazeui/assets/css/amazeui.min.css' %}" rel="stylesheet">
+      <!-- <link th:href="/static/amazeui/assets/css/admin.css" rel="stylesheet"> -->
+      <!-- 当前站点CSS样式文件 -->
+      <link href="{% static 'app1.css' %}" rel="stylesheet">
+  
+      <!-- jQuery -->
+      <script src="/static/amazeui/assets/js/jquery.min.js"></script>
+      <!-- amazeui.js app.js -->
+      <script src="/static/amazeui/assets/js/amazeui.min.js"></script>
+      <script src="/static/app.js"></script>
+  
+  </head>
 
 <body>
-<h1>404</h1>
+<div class="am-g">
+        <div class="am-u-sm-12">
+          <h2 class="am-text-center am-text-xxxl am-margin-top-lg">404. Not Found</h2>
+          <p class="am-text-center">没有找到你要的页面</p>
+        <pre class="page-404">          .----.
+       _.'__    `.
+   .--($)($$)---/#\
+ .' @          /###\·
+ :         ,   #####
+  `-..__.-' _.-\###/
+        `;_:    `"'
+      .'"""""`.
+     /,  ya ,\\
+    //  404!  \\
+    `-._______.-'
+    ___`. | .'___
+   (______|______)
+        </pre>
+        </div>
+      </div>
 
-</body>
+
+    </body>
 
 </html>
