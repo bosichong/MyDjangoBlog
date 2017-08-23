@@ -93,3 +93,16 @@ class Siteinfo(models.Model):
 
     def __str__(self):
         return self.site_name
+
+class Acimage(models.Model):
+    '''相册'''
+    image_title = models.CharField(max_length=20, verbose_name=u'图片标题', default='')
+    image_detail = models.CharField(max_length=200, verbose_name=u'图片简介', default='')
+    image_path = models.ImageField(upload_to="upload/%Y/%m", default="upload/default.jpg", max_length=100, verbose_name=u"图片")
+
+    class Meta:
+        verbose_name = u'网站相册'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.image_title
