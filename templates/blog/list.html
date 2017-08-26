@@ -13,8 +13,8 @@
       <h3 class="am-article-title blog-title">
         <a href="/blog/{{ article.id }}">{{ article.article_title }}</a>
       </h3>
-      <h4 class="am-article-meta blog-meta">by <a href="" class="am-text-warning">{{ article.article_user.user_nick_name }}</a>
-         / posted on<span class="am-text-success"> {{ article.article_create_time }} </span>
+      <h4 class="am-article-meta blog-meta">作者：<a href="" class="am-text-warning">{{ article.article_user.user_nick_name }}</a>
+         / 发表：<span class="am-text-success"> {{ article.article_create_time }} </span>
        / <a href="{% url '' %}?c={{ article.article_category.id}}" class="am-text-secondary">{{ article.article_category }}</a>
       </h4>
 
