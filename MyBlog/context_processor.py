@@ -7,7 +7,7 @@ def site_info(request):
     '''站长资料、网站资料,所有分类上下文'''
     userinfo = UserProfile.objects.get(pk=1)#站长资料
     siteinfo = Siteinfo.objects.get(pk=1)#获取站点信息
-    categorys = Category.objects.all()#获取所有分类
+    categorys = Category.objects.all().order_by('category_sort_id')#获取所有分类
     return {'userinfo':userinfo, 'siteinfo':siteinfo, 'categorys':categorys}
 
 
