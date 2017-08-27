@@ -14,7 +14,7 @@
     <link href="{% static 'amazeui/assets/css/amazeui.min.css' %}" rel="stylesheet">
     <!-- <link th:href="/static/amazeui/assets/css/admin.css" rel="stylesheet"> -->
     <!-- 当前站点CSS样式文件 -->
-    <link href="{% static 'app.css' %}" rel="stylesheet">
+    <link href="{% static 'app1.css' %}" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="/static/amazeui/assets/js/jquery.min.js"></script>
@@ -26,36 +26,38 @@
 <body>
   
 <header class="am-topbar">
-  <h1 class="am-topbar-brand">
-    <a href="{% url '' %}">17python</a>
-  </h1>
 
-  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
-          data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
-      class="am-icon-bars"></span></button>
+  <div class="am-g am-g-fixed blog-g-fixed">
+      <h1 class="am-topbar-brand am-center">
+        <a href="{% url '' %}">17python</a>
+      </h1>
 
-  <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
-    <ul class="am-nav am-nav-pills am-topbar-nav">
-        <li class="{% if page_url == '/' %}am-active{% endif %}"><a href="{% url '' %}">Home</a></li>
-        <li class="{% if page_url == '/?c=1' %}am-active{% endif %}"><a href="{% url '' %}?c=1">Python</a></li>
-        <li class="{% if page_url == '/?c=2' %}am-active{% endif %}"><a href="{% url '' %}?c=2">Django</a></li>
-        <li class="{% if page_url == '/?c=6' %}am-active{% endif %}"><a href="{% url '' %}?c=6">About me</a></li>
-     
-    </ul>
-    <form class="am-topbar-form am-topbar-left am-form-inline am-topbar-right" action="{% url '' %}">
-      
-      <div class="am-form-group">
-        <input type="text" class="am-form-field am-input-sm" placeholder="Python Django" name="s">
+      <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+              data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+          class="am-icon-bars"></span></button>
+
+      <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li class="{% if page_url == '/' %}am-active{% endif %}"><a href="{% url '' %}">Home</a></li>
+            <li class="{% if page_url == '/?c=1' %}am-active{% endif %}"><a href="{% url '' %}?c=1">Python</a></li>
+            <li class="{% if page_url == '/?c=2' %}am-active{% endif %}"><a href="{% url '' %}?c=2">Django</a></li>
+            <li class="{% if page_url == '/?c=6' %}am-active{% endif %}"><a href="{% url '' %}?c=6">About me</a></li>
+        
+        </ul>
+        <form class="am-topbar-form am-topbar-left am-form-inline am-topbar-right" action="{% url '' %}">
+          
+          <div class="am-form-group">
+            <input type="text" class="am-form-field am-input-sm" placeholder="Python Django" name="s">
+          </div>
+          <button type="submit" class="am-btn am-btn-warning am-btn-sm">
+            <i class="am-icon-search"></i>
+            </button>
+        </form>
       </div>
-      <button type="submit" class="am-btn am-btn-warning am-btn-sm">
-        <i class="am-icon-search"></i>
-        </button>
-    </form>
-
-  </header>
+      </header>
 </div>
  <div class="site-topimg am-g">
-  <img src="{% url 'media' siteinfo.site_topimage %}" class="am-img-responsive" alt=""/>
+  <img src="{% url 'media' siteinfo.site_topimage %}" class="am-img-responsive am-center" alt=""/>
 </div> 
 <div class="am-g am-g-fixed blog-g-fixed">
   <div class="am-u-md-8">
@@ -109,8 +111,8 @@
 
 </div>
 
-<div class="am-g footer-top">
-    <div>
+<div class="footer-top">
+    <div class="am-g blog-g-fixed">
         <div class="am-u-md-3">
             <h2 class="site-fd am-text-center"><a href="#" target="_blank" class="am-link-muted">Powered By</a></h2>
             <ul class="site-links">
