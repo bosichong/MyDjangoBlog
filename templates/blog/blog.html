@@ -16,13 +16,27 @@
        / <a href="{% url '' %}?c={{ article.article_category.id}}" class="am-text-secondary">{{ article.article_category }}</a> / 阅读量：{{ article.article_click }}
       </h4>
 
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32 blog-pn">
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_cqq"></a>
+	<a href="http://www.jiathis.com/share?uid=2142778" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2142778" charset="utf-8"></script>
+<br/>
+<!-- JiaThis Button END -->
+
+      
       <div class="blog-content">
        {% autoescape off %}
         {{ article.article_content|toMarkdown }}
        {% endautoescape %}
-    
-    
       </div>
+
       <div class="am-panel blog-pn">
         <div class="am-panel-bd">
           <div class="am-u-sm-6">
