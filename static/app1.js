@@ -1,4 +1,20 @@
 
+
+// // 导航滚动监测
+
+// $(function(){  
+//   var winHeight = $(document).scrollTop();
+//   $(window).scroll(function() {
+//     var scrollY = $(document).scrollTop();// 获取垂直滚动的距离，即滚动了多少
+//     if (scrollY > 100){ //如果滚动距离大于440px则隐藏，否则删除隐藏类
+//       $('.stopnav').css("background","#444");
+//     } 
+//     else {
+//       $('.stopnav').css("background","none");
+//     }});
+// });
+
+
 /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
 particlesJS.load('particles.js', 'particles.json', function() {
   console.log('callback - particles.js config loaded');
@@ -141,3 +157,7 @@ update = function() {
   requestAnimationFrame(update);
 };
 requestAnimationFrame(update);
+
+
+
+

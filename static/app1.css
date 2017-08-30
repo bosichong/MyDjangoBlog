@@ -85,7 +85,24 @@
     font-size: 26px;
 }
 
-/* .am-gotop-fixed{ right: 100px;} */
+
+
+
+/* 导航文字颜色 */
+.am-topbar a{color: #444;}
+/* 去导航背景 */
+.am-topbar-nav>li>a:hover{
+  background: none;
+  color: #F37B1D;
+}
+/* 去导航下边小三角 */
+.am-topbar-nav>li>a:after{display:none;}
+
+/* 选中的导航文字hover 颜色 */
+.am-topbar-nav>li.am-active>a, .am-topbar-nav>li.am-active>a:focus, .am-topbar-nav>li.am-active>a:hover{
+  color: #F37B1D;
+  background: none;
+}
 
 
 
