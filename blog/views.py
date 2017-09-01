@@ -126,3 +126,7 @@ def test(request):
     for k, v in values:
       html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
     return HttpResponse('<table>%s</table>' % '\n'.join(html))
+
+
+def robots(request):
+    return HttpResponse('User-agent: *')

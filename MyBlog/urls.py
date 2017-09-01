@@ -30,6 +30,9 @@ urlpatterns = [
     #配置上传文件的访问处理函数
     url(r'^media/(?P<path>.*)$',  serve, {"document_root":MEDIA_ROOT}, name='media'),
     url(r'^rss$', LatestEntriesFeed(), name='rss'),#rss
+    
+    #Robots.txt 是存放在站点根目录下的一个纯文本文件。虽然它的设置很简单，但是作用却很强大。它可以指定搜索引擎蜘蛛只抓取指定的内容，或者是禁止搜索引擎蜘蛛抓取网站的部分或全部内容。
+    url(r'^robots\.txt$', robots), #robots
 
     url(r'^test', test, name='test'),
 
