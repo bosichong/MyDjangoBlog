@@ -127,6 +127,11 @@ def test(request):
       html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
     return HttpResponse('<table>%s</table>' % '\n'.join(html))
 
-
+# robots
 def robots(request):
     return HttpResponse('User-agent: *')
+
+# sitemap 文件生成
+def sitemap(request):
+    articles = Article.objects.filter(article_type='2').order_by('-article_create_time')
+    return render(request, 'sitemap.html', {'articles':articles}, content_type="text/xml")

@@ -14,7 +14,7 @@
     <link href="{% static 'amazeui/assets/css/amazeui.min.css' %}" rel="stylesheet">
     <!-- <link th:href="/static/amazeui/assets/css/admin.css" rel="stylesheet"> -->
     <!-- 当前站点CSS样式文件 -->
-    <link href="{% static 'app1.css' %}" rel="stylesheet">
+    <link href="{% static 'app.css' %}" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="/static/amazeui/assets/js/jquery.min.js"></script>
@@ -57,6 +57,7 @@
       </header>
 </div>
  <div class="site-topimg am-g">
+   
   <img src="{% url 'media' siteinfo.site_topimage %}" class="am-img-responsive am-center" alt=""/>
 </div> 
 <div class="am-g am-g-fixed blog-g-fixed">
@@ -100,6 +101,26 @@
             
           {% endfor %}
           
+
+        </ul>
+      </section>
+
+
+      <section class="am-panel am-panel-default blog-cat">
+        <div class="am-panel-hd">Articles</div>
+        <ul class="am-list am-list-border">
+         
+          {% for date in dates %}
+
+          <li>
+            <a class="am-link-muted" href="{% url '' %}?c={{ c.id }}">
+           
+            {{ date.year}}/{{ date.month }}
+          
+          </a>
+            
+          </li>
+          {% endfor %}
 
         </ul>
       </section>
@@ -156,14 +177,9 @@
 
 
 <!-- particles.js container -->
-<div id="particles-js">
-
-  
-</div>
-
-
+<div id="particles-js"></div>
 <script src="/static/particles.js"></script>
-<script src="/static/app1.js"></script>
+<script src="/static/app.js"></script>
 
 <!-- particles.js lib (JavaScript CodePen settings): https://github.com/VincentGarreau/particles.js -->
 

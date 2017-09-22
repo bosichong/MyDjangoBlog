@@ -21,6 +21,7 @@ from blog.views import *
 from MyBlog.settings import MEDIA_ROOT
 from MyBlog.feeds import LatestEntriesFeed
 
+
 urlpatterns = [
     url(r'^$', bloglist, name=''),
     url(r'^blog/(?P<id>\w+)$', blog, name='blog'),#blog文章详情页路由设置
@@ -35,6 +36,9 @@ urlpatterns = [
     url(r'^robots\.txt$', robots), #robots
 
     url(r'^test', test, name='test'),
+    
+    # sitemaps url设置
+    url(r'^sitemap\.xml$', sitemap),
 
 
 ]

@@ -85,6 +85,7 @@ class Siteinfo(models.Model):
     site_links = models.TextField(verbose_name=u'links', default='')
     site_contact = models.TextField(verbose_name=u'contact me', default='')
     site_footer = models.TextField(verbose_name=u'站点底部代码', default='')
+    site_changyan = models.TextField(verbose_name='文章底部广告代码', default='')
     
 
     class Meta:
