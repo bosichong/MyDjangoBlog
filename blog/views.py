@@ -1,4 +1,6 @@
 #coding=utf-8
+from datetime import *
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger#翻页相关模块
@@ -15,6 +17,8 @@ def bloglist(request):
     c =request.GET.get('c', '')#分类
     s = ''#搜索关键字
     t = ''#TAG关键字
+    d = request.GET.get('d', '')#默认文章归档
+    
     if request.method == 'GET':
         form = Searchform(request.GET)
         if form.is_valid():
@@ -25,12 +29,19 @@ def bloglist(request):
         if form.is_valid():
             t =request.GET.get('t')
     if c:
+        #分类页
         articles = articles.filter(article_category=c, article_type='2').order_by('-article_create_time')
     elif s:
+        #搜索结果
         articles = articles.filter(Q(article_title__contains=s)|Q(article_content__contains=s),article_type='2').order_by('-article_create_time')
     elif t:
+        #标签页搜索结果
         articles = articles.filter(article_tag__contains=t, article_type='2').order_by('-article_create_time')#name__contains 模糊查找字段
-        
+    elif d:
+        #文章归档 创建时间对象，然后取年，月，利用filter来取相关时间的日志。
+        md = datetime.strptime(d, "%Y-%m")
+        articles = articles.filter(article_create_time__year=md.year, article_create_time__month=md.month, article_type='2')
+         
 
     
     paginator = Paginator(articles, 8) # 第二个参数是每页显示的数量
@@ -55,6 +66,8 @@ def bloglist(request):
                                     'contacts':contacts,
                                     'c':c,
                                     's':s,
+                                    'd':d,
+                                    't':t,
                                     'page_url':page_url,
                                     'page_number':page_number,
                                     'form':form})

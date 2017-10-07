@@ -5,11 +5,15 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title>{% block site_title %}blog{% endblock site_title %}</title>
+  <link rel="shortcut icon" href="http://www.17python.com/media/upload/2017/09/favicon.ico">
+  <meta name="keywords" content="Python,Django,Java,sql,linux,javascript,jquery,git,教程,软件,编程,开发,运维,云计算,网络,互联网">
+  <meta name="description" content="人生苦短，何不一起Python？有关Python的一切。">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
     <!-- amazeui -->
     <link href="{% static 'amazeui/assets/css/amazeui.min.css' %}" rel="stylesheet">
     <!-- <link th:href="/static/amazeui/assets/css/admin.css" rel="stylesheet"> -->
@@ -105,17 +109,27 @@
         </ul>
       </section>
 
+  <!-- 标签云 -->
+      <section class="am-panel am-panel-default">
+        <div class="am-panel-hd">标签云</div>
+        <div class="am-panel-bd">
+          {% for tag in alltags %}
+          <a href="{% url '' %}?t={{ tag }}" class="am-badge {{ tagcss | random }}">{{ tag }}</a>
+          {% endfor %}
+        </div>
+      </section>
 
+<!-- 文章归档  -->
       <section class="am-panel am-panel-default blog-cat">
-        <div class="am-panel-hd">Articles</div>
-        <ul class="am-list am-list-border">
+        <div class="am-panel-hd">文章归档</div>
+        <ul class="am-list am-list-border am-list-striped">
          
           {% for date in dates %}
 
           <li>
-            <a class="am-link-muted" href="{% url '' %}?c={{ c.id }}">
+            <a class="am-link-muted" href="{% url '' %}?d={{ date.year }}-{{ date.month }}">
            
-            {{ date.year}}/{{ date.month }}
+            {{ date.year}}-{{ date.month }}
           
           </a>
             
@@ -176,9 +190,7 @@
 
 
 
-<!-- particles.js container -->
-<div id="particles-js"></div>
-<script src="/static/particles.js"></script>
+
 <script src="/static/app.js"></script>
 
 <!-- particles.js lib (JavaScript CodePen settings): https://github.com/VincentGarreau/particles.js -->
