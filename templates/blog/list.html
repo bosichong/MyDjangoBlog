@@ -15,7 +15,7 @@
       </h3>
       <h4 class="am-article-meta blog-meta">作者：<a href="" class="am-text-warning">{{ article.article_user.user_nick_name }}</a>
          / 发表：<span class="am-text-success"> {{ article.article_create_time }} </span>
-       / <a href="{% url '' %}?c={{ article.article_category.id}}" class="am-text-secondary">{{ article.article_category }}</a>
+       / <a href="{% url '' %}?c={{ article.article_category.id}}" class="am-text-secondary">{{ article.article_category }}/ 阅读量：{{ article.article_click }}</a>
       </h4>
 
       <div class="blog-content">

@@ -48,20 +48,6 @@
   }
 
 
-
-
-/* 首页导航下边距离   */
-.am-topbar{ 
-        margin-bottom: 0px; 
-    }
-
-/* top图下边距  */
-.site-topimg{
-        margin-bottom: 10px;
-    }
-
-
-
 .blog-footer {
       padding: 10px 0;
       text-align: center;
@@ -88,12 +74,42 @@
 
 
 
+
 /* 导航文字颜色 */
-.am-topbar a{color: #444;}
+.am-topbar a{
+  color: #ccc;
+}
+.am-topbar a:hover{
+  color: #fff;
+}
+
+/* 首页导航下边距离   */
+.am-topbar{ 
+  margin-bottom: 0px; 
+  background: #26272b;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: #26272b;
+  color: #fff; 
+}
+
+/* top图下边距  */
+.site-topimg{
+  margin-bottom: 10px;
+}
+
+/* 搜索框颜色 */
+.bosiinput{
+  background: #26272b;
+  color: #666;
+  border-color: #333;
+}
+
+
 /* 去导航背景 */
 .am-topbar-nav>li>a:hover{
   background: none;
-  color: #F37B1D;
+  color: #fff;
 }
 /* 去导航下边小三角 */
 .am-topbar-nav>li>a:after{display:none;}

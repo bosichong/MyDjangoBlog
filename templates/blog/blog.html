@@ -16,25 +16,18 @@
        / <a href="{% url '' %}?c={{ article.article_category.id}}" class="am-text-secondary">{{ article.article_category }}</a> / 阅读量：{{ article.article_click }}
       </h4>
 
-<!-- JiaThis Button BEGIN -->
-<div class="jiathis_style_32x32 blog-pn">
-	<a class="jiathis_button_weixin"></a>
-	<a class="jiathis_button_tsina"></a>
-	<a class="jiathis_button_cqq"></a>
-	<a href="http://www.jiathis.com/share?uid=2142778" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-</div>
-<script type="text/javascript">
-var jiathis_config = {data_track_clickback:'true'};
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2142778" charset="utf-8"></script>
-<br/>
-<!-- JiaThis Button END -->
+
 
       
       <div class="blog-content">
        {% autoescape off %}
         {{ article.article_content|toMarkdown }}
        {% endautoescape %}
+      </div>
+
+      <div class="am-article-meta blog-meta">
+      <p class="am-text-sm am-text-center">本文作者：<a href="/?c=6c" class="am-text-warning">{{ article.article_user.user_nick_name }}</a> 转载请标明出处：<a class="am-text-warning " href="/blog/{{ article.id }}">http://www.17python.com/blog/{{ article.id }}</a></p>
+      <p class="am-text-sm am-text-center"><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" > 本站采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可。<img  style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a></p>
       </div>
 
       <div class="am-panel blog-pn">

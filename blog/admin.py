@@ -5,6 +5,8 @@ from django.utils.safestring import mark_safe
 from  .models import UserProfile, Article, Category, Siteinfo, Acimage
 
 
+
+
 class UserProfileAdmin(admin.ModelAdmin):
     """用来显示用户相关"""
     #用来显示用户字段
@@ -25,6 +27,12 @@ class ArticleAdmin(admin.ModelAdmin):
     """文章字段"""
     list_display = ('article_title','article_user','article_category','article_type','article_up','article_support','article_click')
 
+    #list_per_page设置每页显示多少条记录，默认是100条
+    list_per_page = 15
+    #筛选器
+    list_filter = ('article_category', 'article_create_time') #过滤器
+    search_fields = ('article_title', )          #搜索字段
+    date_hierarchy = 'article_create_time'        #详细时间分层筛选
 
 class SiteinfoAdmin(admin.ModelAdmin):
     list_display = ('site_name','site_user','site_detail')
