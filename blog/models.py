@@ -14,7 +14,7 @@ class UserProfile(AbstractUser):
         4. 如果之前先生成了数据库表，之后修改的user要重新生成表，最好先清空数据库。
     """
     user_nick_name = models.CharField(max_length=24, verbose_name=u'用户昵称', default="")
-    user_gender = models.CharField(max_length=10, choices=(("1",u"男"),("0","女")), default="1", verbose_name=u"性别选择")
+    user_gender = models.CharField(max_length=10, choices=(("1","男"),("0","女")), default="1", verbose_name=u"性别选择")
     user_birday = models.DateField(verbose_name=u"用户生日", null=True, blank=True)
     user_mobile = models.CharField(max_length=11, null=True, blank=True,verbose_name=u'电话号码')
     user_address = models.CharField(max_length=200, verbose_name=u"用户地址", default='')
@@ -55,6 +55,7 @@ class Article(models.Model):
     article_tag = models.CharField(max_length=50, verbose_name=u'日志标签', default='')
     article_content = models.TextField(verbose_name=u'博客正文', default='')
     article_type = models.CharField(max_length=10, choices=(("0",u"草稿"),("1","软删除"),("2","正常")), default="0", verbose_name=u"文章类别")
+    article_original = models.CharField(max_length=10, choices=(("1", "原创"), ("0", "转载")), default="1", verbose_name=u"是否原创")
     article_click = models.PositiveIntegerField(verbose_name=u'文章点击量', default=0)
     article_up = models.CharField(max_length=10, choices=(("1",u"置顶"),("0","取消置顶")), default="0", verbose_name=u"文章置顶")
     article_support= models.CharField(max_length=10, choices=(("1",u"推荐"),("0","取消推荐")), default="0", verbose_name=u"文章推荐")
@@ -75,7 +76,7 @@ class Article(models.Model):
         self.save(update_fields=['article_click'])
 
 class Siteinfo(models.Model):
-    """blog 分类"""
+    """站点信息"""
     site_name = models.CharField(max_length=20, verbose_name=u'站点名称', default='')
     site_detail = models.CharField(max_length=100, verbose_name=u'站点介绍', default='')
     site_user = models.ForeignKey(UserProfile, verbose_name=u'管理员', null=True, blank=True)

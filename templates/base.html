@@ -88,7 +88,7 @@
       </section>
 
 
-
+<!-- 文章分类 -->
       <section class="am-panel am-panel-default blog-cat">
         <div class="am-panel-hd">Category</div>
         <ul class="am-list am-list-border">
@@ -98,6 +98,7 @@
             <a class="am-link-muted" href="{% url '' %}?c={{ c.id }}">
             <i class="{{ c.category_icon }}"></i>
             {{ c.category_name }}
+            <!-- 统计分类下文章数 -->
            <span class="am-badge am-align-right">{{ c.id|cat_count  }}</span> 
           </a>
             
@@ -117,6 +118,35 @@
           <a href="{% url '' %}?t={{ tag }}" class="am-badge {{ tagcss | random }}">{{ tag }}</a>
           {% endfor %}
         </div>
+      </section>
+
+ <!-- 站点资料统计 -->
+      <section class="am-panel am-panel-default">
+        <div class="am-panel-hd">站点统计</div>
+        <div class="am-panel-bd">
+            <p>本站现有博文<span class="am-text-secondary">{{ ac_count }}</span>篇,共被浏览<span class="am-text-success">{{ ac_click }}</span>次</p>
+            <p>据官网介绍，2020年4月Python2.7将不会被维护！距离Python2.7停止维护还有<span class="am-text-warning">{{ killpy2 }}</span>天!</p>
+        </div>
+      </section>
+
+    <!-- 热门文章  -->
+      <section class="am-panel am-panel-default blog-cat">
+        <div class="am-panel-hd">热门文章</div>
+        <ul class="am-list am-list-border">
+
+          {% for hac in hot_articles %}
+
+          <li>
+            <a class="am-link-muted am-text-truncate" href="{% url '' %}blog/{{ hac.id }}">
+
+            {{ hac.article_title }}
+
+          </a>
+
+          </li>
+          {% endfor %}
+
+        </ul>
       </section>
 
 <!-- 文章归档  -->

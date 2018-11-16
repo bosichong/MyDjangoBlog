@@ -67,8 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-                
+                #上下文Context定义
                 'MyBlog.context_processor.site_info',
                 
                 
@@ -133,11 +132,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-#服务器部署设置网站后ADMIN目录
+# #服务器部署设置网站后ADMIN目录
 # STATICFILES_DIRS = [
 #     "/usr/local/lib/python3.5/dist-packages/Django-1.11.4-py3.5.egg/django/contrib/admin/static",
 # ]
-#服务器部署时修改为静态文件存放目录
+# #服务器部署时修改为静态文件存放目录
 # STATIC_ROOT = "/home/www/17python/static/"
 
 #设置上传文件目录

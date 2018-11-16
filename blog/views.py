@@ -13,8 +13,9 @@ from .forms import Searchform, Tagform
 
 def bloglist(request):
     articles = Article.objects.filter(article_type='2').order_by('-article_create_time')
-    page_number = int(request.GET.get('p', '1'))#获取当前页码，用来控制翻页中当前页码的class="{% if p == page_number %}am-active {% endif %}"
+    #获取当前页码，用来控制翻页中当前页码的class="{% if p == page_number %}am-active {% endif %}"
     c =request.GET.get('c', '')#分类
+    page_number = int(request.GET.get('p', '1'))
     s = ''#搜索关键字
     t = ''#TAG关键字
     d = request.GET.get('d', '')#默认文章归档

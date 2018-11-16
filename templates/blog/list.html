@@ -11,6 +11,12 @@
 <article class="blog-main">
       
       <h3 class="am-article-title blog-title">
+          {% if article.article_original == '1' %}
+          <button type="button" class="am-btn am-btn-success am-round am-btn-xs" title="本文为{{ article.article_user.user_nick_name }}原创博文">原</button>
+          {% endif %}
+          {% if article.article_original == '0' %}
+          <button type="button" class="am-btn am-btn-secondary am-round am-btn-xs" title="本文为转载文章">转</button>
+          {% endif %}
         <a href="/blog/{{ article.id }}">{{ article.article_title }}</a>
       </h3>
       <h4 class="am-article-meta blog-meta">作者：<a href="" class="am-text-warning">{{ article.article_user.user_nick_name }}</a>
