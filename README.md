@@ -14,7 +14,7 @@
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2018/1116/201630_6f5d34a4_125848.png "001.png")
 
-![输入图片说明](https://images.gitee.com/uploads/images/2018/1116/201643_9bcfb8be_125848.png "002.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2018/1116/204359_4d1b64ee_125848.png "002.png")
 
 # 本地调试
 
