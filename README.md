@@ -31,7 +31,7 @@ Pillow (4.2.1)
 
 管理员登陆:
 
-用记名：`admin`   密码：`17python.com`
+用户名：`admin`   密码：`17python.com`
 
 前台地址`http://127.0.0.1:8000/`
 
