@@ -48,7 +48,7 @@
         {% endif %}
 
 
-        {% for p in contacts.paginator.page_range %}
+        {% for p in pages %}
        
            <li class="{% if p == page_number %}am-active{% endif %}"><a href="?{% if t != '' %}t={{ t }}&{% endif %}{% if d != '' %}d={{ d }}&{% endif %}{% if c != '' %}c={{ c }}&{% endif %}{% if s != '' %}s={{ s }}&{% endif %}p={{ p }}">{{ p }}</a></li>
         {% endfor %}

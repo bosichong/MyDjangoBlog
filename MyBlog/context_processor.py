@@ -23,7 +23,6 @@ def site_info(request):
     ac_click = 0
     for ac in acs:
         ac_click += int(ac.article_click)
-        print(ac_click)
 
 
 
