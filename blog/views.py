@@ -72,6 +72,8 @@ def bloglist(request):
                                               'page_number': page_number,
                                               'form': form,
                                               'pages':pages,})
+
+
 def pagesHelp(page,num_pages,maxpage):
     '''
     Paginator Django数据分页优化
@@ -86,15 +88,28 @@ def pagesHelp(page,num_pages,maxpage):
         p=1
     else:
         p = int(page)
+    # print(num_pages,p,maxpage)
     offset = num_pages-p
-    if offset <= maxpage:
-        # 结果小于规定数
+    if num_pages > maxpage and offset <= maxpage and p>= maxpage:
+        #假设100页 100-98=2,页尾处理
+        # 结果小于规定数但是当前页大于规定页数
+        # print("结果小于规定数但是当前页大于规定页数",[i + 1 for i in range(num_pages - maxpage, num_pages)])
         return [i + 1 for i in range(num_pages - maxpage, num_pages)]
-    elif p <= maxpage:
-        # 当前页数小于规定数
+
+    elif num_pages > maxpage and offset >= maxpage and p <= maxpage:
+        #假设100页 100-2=98，页头
+        # 结果小于规定数但是当前页大于规定页数
+        # print("结果小于规定数但是当前页大于规定页数",[i + 1 for i in range(maxpage)])
         return [i + 1 for i in range(maxpage)]
+
+    elif num_pages <= maxpage:
+        #假设3页  3<6，总页数很少，少于规定页数
+        # 当前页码数小于规定数
+        # print("当前页码数小于规定数",[i + 1 for i in range(num_pages)])
+        return [i + 1 for i in range(num_pages)]
     else:
         # 正常页数分配
+        # print("正常页数分配",[i + 1 for i in range(p - int(maxpage / 2), p + int(maxpage / 2))])
         return [i + 1 for i in range(p - int(maxpage / 2), p + int(maxpage / 2))]
 
 
